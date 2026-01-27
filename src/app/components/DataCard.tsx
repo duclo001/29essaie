@@ -6,6 +6,8 @@ interface DataCardProps {
 }
 
 export function DataCard({ imageSrc, rotation }: DataCardProps) {
+  const navy = 'rgb(23, 36, 65)';
+
   return (
     <motion.div
       className="relative"
@@ -29,21 +31,21 @@ export function DataCard({ imageSrc, rotation }: DataCardProps) {
       }}
     >
       <motion.div
-        className="w-96 h-80 bg-gradient-to-br from-slate-800/90 to-slate-900/80 backdrop-blur-md rounded-lg shadow-2xl border border-slate-600/50 overflow-hidden"
+        className="w-96 h-80 bg-gradient-to-br from-slate-800/90 to-slate-900/80 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden"
         style={{
           transform: 'rotateX(45deg) rotateZ(-25deg)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(29, 78, 216, 0.6)',
+          boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(23, 36, 65, 0.65)`,
         }}
         whileHover={{
           scale: 1.05,
-          boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(29, 78, 216, 0.8)',
+          boxShadow: `0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(23, 36, 65, 0.85)`,
         }}
         transition={{ duration: 0.3 }}
       >
         {/* Card content - Image */}
-        <div className="w-full h-full p-4">
+        <div className="w-full h-full">
           <motion.div
-            className="w-full h-full rounded-lg overflow-hidden bg-slate-700 shadow-inner"
+            className="w-full h-full overflow-hidden"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -58,7 +60,10 @@ export function DataCard({ imageSrc, rotation }: DataCardProps) {
 
         {/* Glow effect */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-blue-700/30 to-slate-900/30 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(135deg, rgba(23, 36, 65, 0.38), rgba(15, 23, 42, 0.30))`,
+          }}
           animate={{
             opacity: [0.4, 0.7, 0.4],
           }}

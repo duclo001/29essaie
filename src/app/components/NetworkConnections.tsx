@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 
 export function NetworkConnections() {
+  const navy = 'rgb(23, 36, 65)';
+
   // Points arranged to resemble a capital "M"
   // Coordinates are in % of the SVG width/height.
   const nodes = [
@@ -55,7 +57,7 @@ export function NetworkConnections() {
           y1={`${conn.y1}%`}
           x2={`${conn.x2}%`}
           y2={`${conn.y2}%`}
-          stroke="rgba(29, 78, 216, 0.8)"
+          stroke={`rgba(23, 36, 65, 0.85)`}
           strokeWidth="3"
           strokeLinecap="round"
           initial={{ pathLength: 0, pathOffset: 0 }}
@@ -75,9 +77,9 @@ export function NetworkConnections() {
       {/* Gradient definition */}
       <defs>
         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgba(29, 78, 216, 0.4)" />
-          <stop offset="50%" stopColor="rgba(30, 58, 138, 0.7)" />
-          <stop offset="100%" stopColor="rgba(29, 78, 216, 0.4)" />
+          <stop offset="0%" stopColor="rgba(23, 36, 65, 0.35)" />
+          <stop offset="50%" stopColor="rgba(23, 36, 65, 0.75)" />
+          <stop offset="100%" stopColor="rgba(23, 36, 65, 0.35)" />
         </linearGradient>
       </defs>
 
@@ -88,7 +90,7 @@ export function NetworkConnections() {
             cx={`${node.x}%`}
             cy={`${node.y}%`}
             r={node.size}
-            fill="rgba(29, 78, 216, 0.5)"
+            fill={`rgba(23, 36, 65, 0.55)`}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
@@ -100,7 +102,7 @@ export function NetworkConnections() {
             cx={`${node.x}%`}
             cy={`${node.y}%`}
             r={node.size / 2}
-            fill="rgba(29, 78, 216, 0.8)"
+            fill={`rgba(23, 36, 65, 0.9)`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{
@@ -114,7 +116,7 @@ export function NetworkConnections() {
             cy={`${node.y}%`}
             r={node.size}
             fill="none"
-            stroke="rgba(29, 78, 216, 0.7)"
+            stroke={`rgba(23, 36, 65, 0.75)`}
             strokeWidth="2"
             initial={{ scale: 1, opacity: 0.7 }}
             animate={{

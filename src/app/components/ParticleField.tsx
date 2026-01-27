@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { useMemo } from 'react';
 
 export function ParticleField() {
+  const navy = 'rgb(23, 36, 65)';
+
   const particles = useMemo(() => {
     return Array.from({ length: 80 }, (_, i) => ({
       id: i,
@@ -18,13 +20,14 @@ export function ParticleField() {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-blue-700"
+          className="absolute rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: particle.size,
             height: particle.size,
             filter: 'blur(1px)',
+            backgroundColor: navy,
           }}
           animate={{
             opacity: [0, 0.8, 0],
@@ -44,11 +47,12 @@ export function ParticleField() {
       {Array.from({ length: 15 }).map((_, i) => (
         <motion.div
           key={`large-${i}`}
-          className="absolute w-1 h-1 rounded-full bg-blue-600"
+          className="absolute w-1 h-1 rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             filter: 'blur(0.5px)',
+            backgroundColor: navy,
           }}
           animate={{
             x: [0, Math.random() * 50 - 25],
@@ -57,27 +61,6 @@ export function ParticleField() {
           }}
           transition={{
             duration: Math.random() * 4 + 3,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
-
-      {/* Vertical light beams */}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <motion.div
-          key={`beam-${i}`}
-          className="absolute w-px bg-gradient-to-b from-transparent via-blue-700/60 to-transparent"
-          style={{
-            left: `${(i + 1) * 12}%`,
-            height: '100%',
-          }}
-          animate={{
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            delay: i * 0.3,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
