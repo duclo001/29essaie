@@ -31,9 +31,16 @@ function figmaAssetFallback(): Plugin {
   }
 }
 
-export default defineConfig(({ mode }) => ({
-  // Needed for GitHub Pages project sites: https://<user>.github.io/<repo>/
-  base: mode === 'production' ? '/29essaie/' : '/',
+export default defineConfig(({ mode }) => {
+  // GitHub Actions sets GITHUB_ACTIONS=true. We only need a repo sub-path on
+  // GitHub Pages project sites (https://<user>.github.io/<repo>/). On Vercel (and
+  // most hosts) the app is served from '/', so keeping '/29essaie/' would break
+  // asset URLs and routing.
+  const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
+  const base = mode === 'production' && isGitHubActions ? '/29essaie/' : '/'
+
+  return {
+    base,
   plugins: [
     figmaAssetFallback(),
     // The React and Tailwind plugins are both required for Make, even if
@@ -47,4 +54,5 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(__dirname, './src'),
     },
   },
-}))
+  }
+})
