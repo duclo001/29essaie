@@ -1,23 +1,25 @@
 import { motion } from 'motion/react';
 
 export function NetworkConnections() {
-  const connections = [
-    { x1: 30, y1: 20, x2: 50, y2: 40 },
-    { x1: 50, y1: 40, x2: 70, y2: 30 },
-    { x1: 50, y1: 40, x2: 40, y2: 60 },
-    { x1: 50, y1: 40, x2: 60, y2: 65 },
-    { x1: 20, y1: 50, x2: 40, y2: 60 },
-    { x1: 60, y1: 65, x2: 80, y2: 70 },
+  // Points arranged to resemble a capital "M"
+  // Coordinates are in % of the SVG width/height.
+  const nodes = [
+    { x: 25, y: 75, size: 8 },  // bottom-left
+    { x: 25, y: 25, size: 10 }, // top-left
+    { x: 50, y: 58, size: 12 }, // center valley
+    { x: 75, y: 25, size: 10 }, // top-right
+    { x: 75, y: 75, size: 8 },  // bottom-right
   ];
 
-  const nodes = [
-    { x: 30, y: 20, size: 8 },
-    { x: 50, y: 40, size: 12 },
-    { x: 70, y: 30, size: 8 },
-    { x: 40, y: 60, size: 10 },
-    { x: 60, y: 65, size: 10 },
-    { x: 20, y: 50, size: 8 },
-    { x: 80, y: 70, size: 8 },
+  const connections = [
+    // Left pillar
+    { x1: 25, y1: 75, x2: 25, y2: 25 },
+    // Left diagonal down to valley
+    { x1: 25, y1: 25, x2: 50, y2: 58 },
+    // Right diagonal up to peak
+    { x1: 50, y1: 58, x2: 75, y2: 25 },
+    // Right pillar
+    { x1: 75, y1: 25, x2: 75, y2: 75 },
   ];
 
   return (

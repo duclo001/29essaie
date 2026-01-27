@@ -92,62 +92,6 @@ export function DataCardsScene() {
           </motion.div>
         ))}
       </div>
-
-      {/* Holographic nodes */}
-      <motion.div
-        className="absolute"
-        style={{ left: '50%', top: '20%' }}
-        animate={{ 
-          opacity: [0, 1, 1, 1, 1, 1, 0], 
-          scale: [0, 1, 1, 1, 1, 1, 0] 
-        }}
-        transition={{ 
-          duration: animationDuration, 
-          delay: 0.6,
-          times: [0, 0.1, 0.3, 0.5, 0.7, 0.9, 1],
-          repeat: Infinity,
-          repeatDelay: 0,
-        }}
-      >
-        <div className="relative" style={{ transform: 'translate(-50%, -50%)' }}>
-          <motion.div
-            className="w-16 h-16 rounded-full border-2 border-blue-700"
-            animate={{
-              boxShadow: [
-                '0 0 20px rgba(29, 78, 216, 0.6)',
-                '0 0 40px rgba(29, 78, 216, 0.8)',
-                '0 0 20px rgba(29, 78, 216, 0.6)',
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-700/40 to-blue-900/60 backdrop-blur-sm flex items-center justify-center">
-              <svg className="w-8 h-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-          </motion.div>
-          {/* Node rings */}
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              className="absolute inset-0 rounded-full border border-blue-700/50"
-              initial={{ scale: 1, opacity: 0.5 }}
-              animate={{ scale: [1, 1.5, 2], opacity: [0.5, 0.2, 0] }}
-              transition={{
-                duration: 2,
-                delay: i * 0.4,
-                repeat: Infinity,
-                ease: 'easeOut',
-              }}
-            />
-          ))}
-        </div>
-      </motion.div>
     </div>
   );
 }
