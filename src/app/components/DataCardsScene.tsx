@@ -2,9 +2,9 @@ import { motion } from 'motion/react';
 import { DataCard } from './DataCard';
 import { ParticleField } from './ParticleField';
 import { NetworkConnections } from './NetworkConnections';
-import image1 from 'figma:asset/d61dd11a36f9dd7ae462c6ef5018e46b6e4f4bc1.png';
-import image2 from 'figma:asset/6495a93e344c95c0c2a7bf57b035d98069b8bef9.png';
-import image3 from 'figma:asset/4ceb49b8c627628e1f33bc09282dd76e0235a590.png';
+import image1 from '@/assets/d61dd11a36f9dd7ae462c6ef5018e46b6e4f4bc1.png';
+import image2 from '@/assets/6495a93e344c95c0c2a7bf57b035d98069b8bef9.png';
+import image3 from '@/assets/4ceb49b8c627628e1f33bc09282dd76e0235a590.png';
 
 export function DataCardsScene() {
   const cards = [

@@ -31,7 +31,9 @@ function figmaAssetFallback(): Plugin {
   }
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // Needed for GitHub Pages project sites: https://<user>.github.io/<repo>/
+  base: mode === 'production' ? '/29essaie/' : '/',
   plugins: [
     figmaAssetFallback(),
     // The React and Tailwind plugins are both required for Make, even if
@@ -45,4 +47,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+}))
