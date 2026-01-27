@@ -31,7 +31,7 @@ export function DataCard({ imageSrc, rotation }: DataCardProps) {
       }}
     >
       <motion.div
-        className="w-96 h-80 bg-gradient-to-br from-slate-800/90 to-slate-900/80 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden"
+        className="w-[min(24rem,92vw)] h-[clamp(14rem,40vh,20rem)] sm:w-96 sm:h-80 bg-gradient-to-br from-slate-800/90 to-slate-900/80 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden"
         style={{
           transform: 'rotateX(45deg) rotateZ(-25deg)',
           boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(23, 36, 65, 0.65)`,

@@ -2,11 +2,21 @@ import { motion } from 'motion/react';
 import { DataCard } from './DataCard';
 import { ParticleField } from './ParticleField';
 import { NetworkConnections } from './NetworkConnections';
+import { useIsMobile } from './ui/use-mobile';
 import image1 from '@/assets/image1.png';
 import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
 
 export function DataCardsScene() {
+  const isMobile = useIsMobile();
+
+  // Responsive MOBILE ONLY: on réduit fortement les offsets en X pour éviter le débordement
+  // tout en gardant la chorégraphie desktop identique.
+  const xFactor = isMobile ? 0.06 : 1;
+  const alignXFactor = isMobile ? 0.04 : 1;
+  const yFactor = isMobile ? 0.8 : 1;
+  const lift = isMobile ? 60 : 100;
+
   const cards = [
     {
       id: 1,
@@ -54,20 +64,20 @@ export function DataCardsScene() {
               // Étapes: Apparition -> Position initiale -> Formation boule -> Alignement horizontal -> Retour -> Disparition
               opacity: [0, 1, 1, 1, 1, 1, 0],
               x: [
-                card.initialPosition.x, 
-                card.initialPosition.x, 
-                card.spherePosition.x, 
-                card.horizontalPosition.x, 
-                card.initialPosition.x,
-                card.initialPosition.x
+                card.initialPosition.x * xFactor,
+                card.initialPosition.x * xFactor,
+                card.spherePosition.x * xFactor,
+                card.horizontalPosition.x * alignXFactor,
+                card.initialPosition.x * xFactor,
+                card.initialPosition.x * xFactor,
               ],
               y: [
-                card.initialPosition.y - 100,
-                card.initialPosition.y, 
-                card.spherePosition.y, 
-                card.horizontalPosition.y, 
-                card.initialPosition.y,
-                card.initialPosition.y - 100
+                (card.initialPosition.y - lift) * yFactor,
+                card.initialPosition.y * yFactor,
+                card.spherePosition.y * yFactor,
+                card.horizontalPosition.y * yFactor,
+                card.initialPosition.y * yFactor,
+                (card.initialPosition.y - lift) * yFactor,
               ],
               rotateX: [-90, 0, 0, 0, 0, -90],
               rotateY: [0, 0, 360, 360, 360, 360],
