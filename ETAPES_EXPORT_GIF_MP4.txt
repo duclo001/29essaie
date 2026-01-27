@@ -1,0 +1,102 @@
+ETAPES POUR EXPORTER UN GIF + UNE VIDEO MP4 (WhatsApp)
+Date: 2026-01-27
+Projet: 29eme essaie (Vite + React)
+OS: Windows
+
+============================================================
+1) Pré-requis (une seule fois)
+============================================================
+Ouvrir un terminal PowerShell dans le dossier du projet, puis exécuter:
+
+1. Se placer dans le dossier du projet:
+   cd "c:\Users\wildg\Downloads\29eme essaie"
+
+2. Installer / mettre à jour les dépendances:
+   npm install
+
+3. Installer Chromium pour Playwright (nécessaire pour capturer l’animation):
+   npx playwright install chromium
+
+Notes:
+- Cette étape télécharge Chromium dans votre profil utilisateur (AppData).
+- Elle n’est généralement pas à refaire sauf si Playwright change de version ou si le cache est supprimé.
+
+============================================================
+2) Export GIF (téléchargeable)
+============================================================
+Commande:
+   cd "c:\Users\wildg\Downloads\29eme essaie"; npm run export:gif
+
+Résultat:
+- Le GIF est généré ici:
+  exports/animation.gif
+
+Ce que fait la commande (automatique):
+- Build du projet: `npm run build`
+- Lancement serveur preview: `npm run preview -- --port 4173 --strictPort`
+- Capture vidéo de la page via Playwright
+- Conversion WebM -> GIF via ffmpeg
+
+Paramètres optionnels (variables d’environnement):
+- GIF_SECONDS (défaut: 6)  -> durée de capture
+- GIF_FPS     (défaut: 20) -> fluidité
+- GIF_WIDTH   (défaut: 960)-> largeur de sortie
+- GIF_PORT    (défaut: 4173)
+
+Exemple (10 secondes en 24 fps, 1080px):
+   $env:GIF_SECONDS=10; $env:GIF_FPS=24; $env:GIF_WIDTH=1080; npm run export:gif
+
+============================================================
+3) Export MP4 (recommandé pour WhatsApp)
+============================================================
+Commande:
+   cd "c:\Users\wildg\Downloads\29eme essaie"; npm run export:mp4
+
+Résultat:
+- La vidéo MP4 est générée ici:
+  exports/animation.mp4
+
+Pourquoi MP4:
+- En général plus léger et plus fluide que GIF
+- WhatsApp le gère très bien
+
+Paramètres optionnels (variables d’environnement):
+- MP4_SECONDS (défaut: 6)   -> durée de capture
+- MP4_WIDTH   (défaut: 960) -> largeur de sortie
+- MP4_CRF     (défaut: 23)  -> qualité (plus petit = meilleure qualité, plus lourd)
+- MP4_PORT    (défaut: 4173)
+
+Exemple (8 secondes, 1080px, meilleure qualité):
+   $env:MP4_SECONDS=8; $env:MP4_WIDTH=1080; $env:MP4_CRF=20; npm run export:mp4
+
+============================================================
+4) Fichiers ajoutés / modifiés dans le projet
+============================================================
+Scripts ajoutés:
+- scripts/export-gif.mjs
+- scripts/export-mp4.mjs
+
+Scripts npm ajoutés (package.json):
+- "preview": "vite preview"
+- "export:gif": "node scripts/export-gif.mjs"
+- "export:mp4": "node scripts/export-mp4.mjs"
+
+Dépendances ajoutées (devDependencies):
+- playwright
+- ffmpeg-static
+
+README mis à jour:
+- Ajout d’une section expliquant `npm run export:gif` et `npm run export:mp4`
+
+============================================================
+5) Remarques Windows (important)
+============================================================
+- La conversion utilise ffmpeg avec un filtre `-vf` contenant des `;`.
+  Sous Windows, si ffmpeg est lancé via un shell (cmd), ces `;` peuvent casser la commande.
+  Les scripts sont configurés pour lancer ffmpeg sans shell afin d’éviter ce problème.
+
+============================================================
+6) Envoi sur WhatsApp (conseil)
+============================================================
+- Pour la meilleure qualité: envoyer `exports/animation.mp4` comme Document.
+- Sinon: envoyer comme Vidéo (WhatsApp peut compresser).
