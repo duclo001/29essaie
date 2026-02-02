@@ -8,6 +8,22 @@ import { chromium } from 'playwright'
 const ROOT = process.cwd()
 const EXPORT_DIR = path.join(ROOT, 'exports')
 
+/**
+ * Exporte une animation en MP4.
+ *
+ * Pipeline :
+ * 1) `npm run build`
+ * 2) démarre un serveur `npm run preview`
+ * 3) Playwright (Chromium) enregistre une vidéo de la page
+ * 4) ffmpeg convertit la vidéo en MP4 (H.264) compatible (ex: WhatsApp)
+ *
+ * Variables d'environnement :
+ * - `MP4_PORT` (défaut 4173)
+ * - `MP4_SECONDS` (défaut 6)
+ * - `MP4_WIDTH` (défaut 960)
+ * - `MP4_CRF` (défaut 23) : qualité/poids (plus bas = meilleure qualité)
+ */
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }

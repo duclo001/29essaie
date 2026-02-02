@@ -1,35 +1,34 @@
 
-  # 29eme essaie
+  # ProjetFigma8
 
-  This is a code bundle for 29eme essaie. The original project is available at https://www.figma.com/design/te4A1inMP5oNdt4YN01MP1/29eme-essaie.
+    Ceci est un bundle de code pour « ProjetFigma8 ». 
+    ## Lancer le projet
 
-  ## Running the code
+    Exécute `npm i` pour installer les dépendances.
 
-  Run `npm i` to install the dependencies.
+    Exécute `npm run dev` pour démarrer le serveur de développement.
 
-  Run `npm run dev` to start the development server.
+    ## Exporter un GIF téléchargeable
 
-  ## Export a downloadable GIF
+    Exécute `npm run export:gif` pour générer un enregistrement GIF de l’animation.
 
-  Run `npm run export:gif` to generate a GIF recording of the animation.
+    Fichier de sortie : `exports/animation.gif`
 
-  Output file: `exports/animation.gif`
+    Variables d’environnement optionnelles :
+    - `GIF_SECONDS` (défaut : 6)
+    - `GIF_FPS` (défaut : 20)
+    - `GIF_WIDTH` (défaut : 960)
+    - `GIF_PORT` (défaut : 4173)
 
-  Optional environment variables:
-  - `GIF_SECONDS` (default: 6)
-  - `GIF_FPS` (default: 20)
-  - `GIF_WIDTH` (default: 960)
-  - `GIF_PORT` (default: 4173)
+    ## Exporter un MP4 compatible WhatsApp
 
-  ## Export a WhatsApp-friendly MP4
+    Exécute `npm run export:mp4` pour générer un fichier vidéo facile à partager.
 
-  Run `npm run export:mp4` to generate a video file you can share easily.
+    Fichier de sortie : `exports/animation.mp4`
 
-  Output file: `exports/animation.mp4`
-
-  Optional environment variables:
-  - `MP4_SECONDS` (default: 6)
-  - `MP4_WIDTH` (default: 960)
-  - `MP4_CRF` (default: 23)
-  - `MP4_PORT` (default: 4173)
+    Variables d’environnement optionnelles :
+    - `MP4_SECONDS` (défaut : 6)
+    - `MP4_WIDTH` (défaut : 960)
+    - `MP4_CRF` (défaut : 23)
+    - `MP4_PORT` (défaut : 4173)
   

@@ -1,6 +1,6 @@
 ETAPES POUR EXPORTER UN GIF + UNE VIDEO MP4 (WhatsApp)
 Date: 2026-01-27
-Projet: 29eme essaie (Vite + React)
+Projet: ProjetFigma8 (Vite + React)
 OS: Windows
 
 ============================================================
@@ -9,7 +9,7 @@ OS: Windows
 Ouvrir un terminal PowerShell dans le dossier du projet, puis exécuter:
 
 1. Se placer dans le dossier du projet:
-   cd "c:\Users\wildg\Downloads\29eme essaie"
+   cd "c:\Users\wildg\Downloads\ProjetFigma8"
 
 2. Installer / mettre à jour les dépendances:
    npm install
@@ -25,7 +25,7 @@ Notes:
 2) Export GIF (téléchargeable)
 ============================================================
 Commande:
-   cd "c:\Users\wildg\Downloads\29eme essaie"; npm run export:gif
+   cd "c:\Users\wildg\Downloads\ProjetFigma8"; npm run export:gif
 
 Résultat:
 - Le GIF est généré ici:
@@ -50,7 +50,7 @@ Exemple (10 secondes en 24 fps, 1080px):
 3) Export MP4 (recommandé pour WhatsApp)
 ============================================================
 Commande:
-   cd "c:\Users\wildg\Downloads\29eme essaie"; npm run export:mp4
+   cd "c:\Users\wildg\Downloads\ProjetFigma8"; npm run export:mp4
 
 Résultat:
 - La vidéo MP4 est générée ici:
@@ -88,15 +88,3 @@ Dépendances ajoutées (devDependencies):
 README mis à jour:
 - Ajout d’une section expliquant `npm run export:gif` et `npm run export:mp4`
 
-============================================================
-5) Remarques Windows (important)
-============================================================
-- La conversion utilise ffmpeg avec un filtre `-vf` contenant des `;`.
-  Sous Windows, si ffmpeg est lancé via un shell (cmd), ces `;` peuvent casser la commande.
-  Les scripts sont configurés pour lancer ffmpeg sans shell afin d’éviter ce problème.
-
-============================================================
-6) Envoi sur WhatsApp (conseil)
-============================================================
-- Pour la meilleure qualité: envoyer `exports/animation.mp4` comme Document.
-- Sinon: envoyer comme Vidéo (WhatsApp peut compresser).

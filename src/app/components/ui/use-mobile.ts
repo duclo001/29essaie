@@ -2,6 +2,14 @@ import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
 
+/**
+ * Hook utilitaire : indique si l'écran est considéré "mobile".
+ *
+ * Détails :
+ * - utilise `matchMedia` pour écouter les changements de taille
+ * - seuil : < 768px (breakpoint Tailwind classique)
+ * - retourne un booléen (jamais `undefined` côté appelant)
+ */
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
     undefined,

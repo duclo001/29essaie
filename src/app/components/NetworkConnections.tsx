@@ -1,5 +1,14 @@
 import { motion } from 'motion/react';
 
+/**
+ * Réseau de connexions (décoratif) dessiné en SVG.
+ *
+ * Le motif est volontairement simple : des nœuds + des lignes qui forment un "M".
+ * On anime :
+ * - le tracé des lignes (pathLength) à l'apparition
+ * - des pulses qui se déplacent le long des segments
+ * - des anneaux pulsants autour des nœuds
+ */
 export function NetworkConnections() {
   const navy = 'rgb(23, 36, 65)';
 

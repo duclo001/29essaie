@@ -37,7 +37,8 @@ export default defineConfig(({ mode }) => {
   // most hosts) the app is served from '/', so keeping '/29essaie/' would break
   // asset URLs and routing.
   const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
-  const base = mode === 'production' && isGitHubActions ? '/29essaie/' : '/'
+  const repoName = process.env.GITHUB_REPOSITORY?.split('/')?.[1]
+  const base = mode === 'production' && isGitHubActions && repoName ? `/${repoName}/` : '/'
 
   return {
     base,

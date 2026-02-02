@@ -7,6 +7,23 @@ import image1 from '@/assets/image1.png';
 import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
 
+/**
+ * Scène animée principale.
+ *
+ * Affiche :
+ * - un fond d'effets (particules + réseau)
+ * - 3 cartes (images) animées en boucle avec Motion
+ *
+ * Chorégraphie (par carte) :
+ * 1) apparition depuis le haut (lift)
+ * 2) position initiale
+ * 3) "formation boule" (orbite/rotation)
+ * 4) alignement horizontal
+ * 5) retour + disparition
+ *
+ * Note : sur mobile, on réduit fortement les offsets X/Y pour éviter le débordement
+ * tout en gardant la même séquence de keyframes.
+ */
 export function DataCardsScene() {
   const isMobile = useIsMobile();
 
@@ -17,6 +34,15 @@ export function DataCardsScene() {
   const yFactor = isMobile ? 0.8 : 1;
   const lift = isMobile ? 60 : 100;
 
+  /**
+   * Paramétrage des cartes.
+   *
+   * Chaque carte définit :
+   * - une image
+   * - un délai de démarrage dans la boucle
+   * - des positions-clés (initiale, "boule", alignement)
+   * - une rotation Z (inclinaison visuelle)
+   */
   const cards = [
     {
       id: 1,
@@ -47,15 +73,16 @@ export function DataCardsScene() {
     },
   ];
 
-  const animationDuration = 10; // Durée totale du cycle en secondes
+  /** Durée totale du cycle en secondes (la boucle repart immédiatement). */
+  const animationDuration = 10;
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      {/* Background particles and effects */}
+      {/* Fond : particules + connexions (purement décoratif) */}
       <ParticleField />
       <NetworkConnections />
       
-      {/* Data cards */}
+      {/* Cartes : animations en boucle avec keyframes synchronisées */}
       <div className="relative z-10">
         {cards.map((card) => (
           <motion.div

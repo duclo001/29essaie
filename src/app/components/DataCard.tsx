@@ -1,10 +1,24 @@
 import { motion } from 'motion/react';
 
+/**
+ * Propriétés d'une carte affichant une image, avec une inclinaison/rotation.
+ */
 interface DataCardProps {
+  /** URL (ou import Vite) de l'image à afficher. */
   imageSrc: string;
+  /** Rotation Z (en degrés) appliquée pour varier l'orientation de chaque carte. */
   rotation: number;
 }
 
+/**
+ * Carte "document" animée.
+ *
+ * Effets :
+ * - léger flottement vertical (y)
+ * - perspective + rotation 3D pour donner une impression de profondeur
+ * - halo (glow) animé en opacité
+ * - survol : légère mise à l'échelle + ombre renforcée
+ */
 export function DataCard({ imageSrc, rotation }: DataCardProps) {
   const navy = 'rgb(23, 36, 65)';
 

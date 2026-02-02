@@ -1,9 +1,21 @@
 import { motion } from 'motion/react';
 import { useMemo } from 'react';
 
+/**
+ * Fond de particules (décoratif).
+ *
+ * Implémentation :
+ * - génère une liste de particules une seule fois via `useMemo` (positions aléatoires)
+ * - anime chaque particule en boucle (opacité, scale, légère dérive verticale)
+ * - ajoute quelques particules plus grosses, "flottantes"
+ */
 export function ParticleField() {
   const navy = 'rgb(23, 36, 65)';
 
+  /**
+   * Particules "petites" : on fige les positions/tailles une fois
+   * pour éviter que le rendu change à chaque re-render.
+   */
   const particles = useMemo(() => {
     return Array.from({ length: 80 }, (_, i) => ({
       id: i,

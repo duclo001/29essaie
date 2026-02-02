@@ -8,6 +8,22 @@ import { chromium } from 'playwright'
 const ROOT = process.cwd()
 const EXPORT_DIR = path.join(ROOT, 'exports')
 
+/**
+ * Exporte une animation en GIF.
+ *
+ * Pipeline :
+ * 1) `npm run build`
+ * 2) démarre un serveur `npm run preview`
+ * 3) Playwright (Chromium) enregistre une vidéo de la page
+ * 4) ffmpeg convertit la vidéo en GIF (palettegen/paletteuse pour meilleure qualité)
+ *
+ * Variables d'environnement :
+ * - `GIF_PORT` (défaut 4173)
+ * - `GIF_SECONDS` (défaut 6)
+ * - `GIF_FPS` (défaut 20)
+ * - `GIF_WIDTH` (défaut 960)
+ */
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
